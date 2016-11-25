@@ -461,6 +461,11 @@ Processing triggers for ureadahead (0.100.0-16) ...
 ```
 
 ```sh
+droid@droidserver:~$ ps aux | grep rabbitmq
+droid    30135  0.0  0.0  15948  2232 pts/10   S+   13:27   0:00 grep --color=auto rabbitmq
+```
+
+```sh
 droid@droidserver:~$ sudo rabbitmq-server
 
               RabbitMQ 3.6.6. Copyright (C) 2007-2016 Pivotal Software, Inc.
@@ -473,7 +478,6 @@ droid@droidserver:~$ sudo rabbitmq-server
  completed with 0 plugins.
 
 ```
-
 
 ```sh
 droid@droidserver:~$ ps aux | grep rabbit
