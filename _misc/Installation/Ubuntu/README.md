@@ -1,5 +1,7 @@
 ### Installation
 
+Erlang should be installed prior to the installation of RabbitMQ.
+
 ```sh
 droid@droidserver:~/software/RabbitMQ/RabbitMQ-3.6.6-1$ ls
 rabbitmq-server_3.6.6-1_all.deb
