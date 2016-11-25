@@ -459,3 +459,105 @@ Setting up rabbitmq-server (3.6.6-1) ...
 Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
 Processing triggers for ureadahead (0.100.0-16) ...
 ```
+
+```sh
+droid@droidserver:~$ sudo rabbitmq-server
+
+              RabbitMQ 3.6.6. Copyright (C) 2007-2016 Pivotal Software, Inc.
+  ##  ##      Licensed under the MPL.  See http://www.rabbitmq.com/
+  ##  ##
+  ##########  Logs: /var/log/rabbitmq/rabbit@droidserver.log
+  ######  ##        /var/log/rabbitmq/rabbit@droidserver-sasl.log
+  ##########
+              Starting broker...
+ completed with 0 plugins.
+
+```
+
+
+```sh
+droid@droidserver:~$ ps aux | grep rabbit
+root     30137  0.0  0.0  75368  4008 pts/10   S+   13:27   0:00 sudo rabbitmq-server
+root     30138  0.0  0.0   4448  1692 pts/10   S+   13:27   0:00 /bin/sh /usr/sbin/rabbitmq-server
+root     30145  0.0  0.0  74944  3788 pts/10   S+   13:27   0:00 su rabbitmq -s /bin/sh -c /usr/lib/rabbitmq/bin/rabbitmq-server 
+rabbitmq 30153  0.0  0.0   4448   808 ?        Ss   13:27   0:00 sh -c /usr/lib/rabbitmq/bin/rabbitmq-server 
+rabbitmq 30154  0.0  0.0   4448  1680 ?        S    13:27   0:00 /bin/sh -e /usr/lib/rabbitmq/bin/rabbitmq-server
+rabbitmq 30236  0.0  0.0   7500    96 ?        S    13:27   0:00 /usr/local/lib/erlang/erts-8.1/bin/epmd -daemon
+rabbitmq 30259  2.6  0.6 3764720 50884 ?       Sl   13:27   0:02 /usr/local/lib/erlang/erts-8.1/bin/beam.smp -W w -A 64 -P 1048576 -t 5000000 -stbt db -zdbbl 32000 -K true -B i -- -root /usr/local/lib/erlang -progname erl -- -home /var/lib/rabbitmq -- -pa /usr/lib/rabbitmq/lib/rabbitmq_server-3.6.6/ebin -noshell -noinput -s rabbit boot -sname rabbit@droidserver -boot start_sasl -kernel inet_default_connect_options [{nodelay,true}] -sasl errlog_type error -sasl sasl_error_logger false -rabbit error_logger {file,"/var/log/rabbitmq/rabbit@droidserver.log"} -rabbit sasl_error_logger {file,"/var/log/rabbitmq/rabbit@droidserver-sasl.log"} -rabbit enabled_plugins_file "/etc/rabbitmq/enabled_plugins" -rabbit plugins_dir "/usr/lib/rabbitmq/lib/rabbitmq_server-3.6.6/plugins" -rabbit plugins_expand_dir "/var/lib/rabbitmq/mnesia/rabbit@droidserver-plugins-expand" -os_mon start_cpu_sup false -os_mon start_disksup false -os_mon start_memsup false -mnesia dir "/var/lib/rabbitmq/mnesia/rabbit@droidserver" -kernel inet_dist_listen_min 25672 -kernel inet_dist_listen_max 25672
+rabbitmq 30357  0.0  0.0   4340  1500 ?        Ss   13:27   0:00 erl_child_setup 1024
+rabbitmq 30370  0.0  0.0   7464   940 ?        Ss   13:27   0:00 inet_gethost 4
+rabbitmq 30371  0.0  0.0   9556  1596 ?        S    13:27   0:00 inet_gethost 4
+droid    30464  0.0  0.0  15948  2212 pts/11   S+   13:28   0:00 grep --color=auto rabbit
+```
+
+
+```sh
+droid@droidserver:~$ sudo rabbitmqctl status
+[sudo] password for droid: 
+Status of node rabbit@droidserver ...
+[{pid,30259},
+ {running_applications,[{rabbit,"RabbitMQ","3.6.6"},
+                        {mnesia,"MNESIA  CXC 138 12","4.14.1"},
+                        {os_mon,"CPO  CXC 138 46","2.4.1"},
+                        {ranch,"Socket acceptor pool for TCP protocols.",
+                               "1.2.1"},
+                        {rabbit_common,[],"3.6.6"},
+                        {xmerl,"XML parser","1.3.12"},
+                        {sasl,"SASL  CXC 138 11","3.0.1"},
+                        {stdlib,"ERTS  CXC 138 10","3.1"},
+                        {kernel,"ERTS  CXC 138 10","5.1"}]},
+ {os,{unix,linux}},
+ {erlang_version,"Erlang/OTP 19 [erts-8.1] [source] [64-bit] [smp:4:4] [async-threads:64] [hipe] [kernel-poll:true]\n"},
+ {memory,[{total,46642760},
+          {connection_readers,0},
+          {connection_writers,0},
+          {connection_channels,0},
+          {connection_other,0},
+          {queue_procs,2832},
+          {queue_slave_procs,0},
+          {plugins,0},
+          {other_proc,18662056},
+          {mnesia,60120},
+          {mgmt_db,0},
+          {msg_index,45952},
+          {other_ets,986936},
+          {binary,19384},
+          {code,17738802},
+          {atom,752561},
+          {other_system,8374117}]},
+ {alarms,[]},
+ {listeners,[{clustering,25672,"::"},{amqp,5672,"::"}]},
+ {vm_memory_high_watermark,0.4},
+ {vm_memory_limit,3293700096},
+ {disk_free_limit,50000000},
+ {disk_free,17867169792},
+ {file_descriptors,[{total_limit,924},
+                    {total_used,2},
+                    {sockets_limit,829},
+                    {sockets_used,0}]},
+ {processes,[{limit,1048576},{used,140}]},
+ {run_queue,0},
+ {uptime,204},
+ {kernel,{net_ticktime,60}}]
+```
+
+```sh
+droid@droidserver:~$ sudo rabbitmqctl stop
+[sudo] password for droid: 
+Stopping and halting node rabbit@droidserver ...
+```
+
+
+```sh
+droid@droidserver:~$ sudo rabbitmq-server
+
+              RabbitMQ 3.6.6. Copyright (C) 2007-2016 Pivotal Software, Inc.
+  ##  ##      Licensed under the MPL.  See http://www.rabbitmq.com/
+  ##  ##
+  ##########  Logs: /var/log/rabbitmq/rabbit@droidserver.log
+  ######  ##        /var/log/rabbitmq/rabbit@droidserver-sasl.log
+  ##########
+              Starting broker...
+ completed with 0 plugins.
+Gracefully halting Erlang VM            <---------
+```
