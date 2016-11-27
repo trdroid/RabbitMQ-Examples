@@ -11,6 +11,12 @@ The messages sent to an *exchange* are delivered to a *queue* by RabbitMQ based 
 A broker like RabbitMQ routes messages from *exchanges* to *queues* based on *routing keys*.
 A *routing key* is what binds a *queue* to an *exchange*. 
 
+**Bindings**
+
+A set of *routing keys* are collectively known as *bindings*.
+
+**Discarded Messages**
+
 If a message has a *routing key* that does not match any *binding pattern*, then it will be deleted. 
 
 **Delivery to Multiple Queues**
@@ -27,6 +33,24 @@ The AMQP protocol provides the following types of *exchanges*
 * *Headers*
 
 Each type implements a different routing algorithm for routing messages from *exchanges* to the *queues*. 
+
+### Direct Exchange
+
+With a *direct exchange*, RabbitMQ delivers a *message* to a *queue* if their routing key matches. 
+
+### Fanout Exchange
+
+A *message* sent to a multicast *exchange* is delivered to all the *queues* bound to this *exchange*.
+
+### Topic Exchange
+
+*messages* from different sources can be routed to the same *queue*
+
+### Headers Exchange
+
+With a *headers exchange*, RabbitMQ delivers a *message* to a *queue* by comparing header in the AMQP *message* but not the *routing key*.
+
+It operates identical to the *direct exchange* and performs poorly because of which it does not provide any benefit. 
 
 ### Publishing to a *exchange* vs Publishing to a *queue*
 
