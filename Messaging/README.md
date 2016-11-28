@@ -23,3 +23,11 @@ AMQP messages can be routed in the following ways
   * Selective broadcast
 * One-to-One
 
+### Breaking the client/server model
+
+*Producers* and *Consumers* in RabbitMQ communicate by sending and receiving *messages* rather than following the client/server architecture.
+
+### Enhanced Transport Layer
+
+Messaging in general and AMQP in particular could be considered as an enhanced transport layer, 
+because of which RabbitMQ can be thought of as a *router* for any software application.
