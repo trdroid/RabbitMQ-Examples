@@ -9,6 +9,15 @@ A few of the AMQP commands include commands to perform the following tasks, whic
 * Receiving a *message*
 * Subscribing to a *queue*
 
+### Publishing and Consuming *messages* over *channels*
+
+*Producers* publish *messages* to RabbitMQ over *channels*
+
+*Consumers* consume *messages* to RabbitMQ over *channels*
+
+![](_misc/Channels%20Block%20Diagram.png)
+
+
 ### AMQP commands over TCP vs AMQP commands over Channels
 
 Setting up and tearing down TCP sessions is expensive for an operating system. 
