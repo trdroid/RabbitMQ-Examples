@@ -31,3 +31,7 @@ AMQP messages can be routed in the following ways
 
 Messaging in general and AMQP in particular could be considered as an enhanced transport layer, 
 because of which RabbitMQ can be thought of as a *router* for any software application.
+
+### Block Diagram
+
+![](_misc/Block%20Diagram.png)
